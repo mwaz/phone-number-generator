@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 app.use(jsend.middleware);
 
 // routes(app);
+
 app.use('/pop-mgt/api', routes)
 
 app.use(express.static(path.join(__dirname, 'public')));

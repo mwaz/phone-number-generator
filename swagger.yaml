@@ -17,7 +17,7 @@ servers:
         enum:
           - 'http'
           - 'https'
-        default: 'http'
+        default: 'https'
 
 basePath: /phone-number-generator/api
 schemes: 

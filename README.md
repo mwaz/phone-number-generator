@@ -18,7 +18,7 @@ The API enables a user generate unique phone numbers everytime. they can then re
 
 ## Application setup 
 
-The Phone generator API is hosted on heroku and you can access the [documentation here](https://phone-number-generator.herokuapp.com/api-docs). Through the docs you can test out the endpoints and the functionnality of the API.
+The Phone generator API is hosted on heroku and you can access the [documentation here](https://phone-number-generator-api.herokuapp.com/api-docs). Through the docs you can test out the endpoints and the functionnality of the API.
 
 ## Running the application locally 
 1. clone the application from `git@github.com:mwaz/sms-mgt-api.git`

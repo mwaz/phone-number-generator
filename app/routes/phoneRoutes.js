@@ -8,8 +8,9 @@ import store from 'store-js';
 
 router.post('/', catchErrors(phoneController.generateNumbers));
 router.get('/', catchErrors(phoneController.getNumbers));
-router.get('/max', catchErrors(phoneController.sortNumbersMax));
-router.get('/min', catchErrors(phoneController.sortNumbersMin));
+router.delete('/', catchErrors(phoneController.deleteNumbers));
+router.get('/ascending', catchErrors(phoneController.sortNumbersMax));
+router.get('/descending', catchErrors(phoneController.sortNumbersMin));
 
 router.use((error, req, res, next) => {
 if (error.type === 'ValidationError') {
@@ -17,7 +18,7 @@ if (error.type === 'ValidationError') {
   };
 
   res.status(500).jsend.error({
-    message: 'Something went wrong on the server.'
+    message: 'Oops!, Kindly retry'
   });
 });
 

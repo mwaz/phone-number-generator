@@ -7,18 +7,16 @@ import express from 'express';
 import jsend from 'jsend';
 import swaggerUi  from 'swagger-ui-express';
 import YAML from 'yamljs';
-// const swaggerDocument = YAML.load('./swagger.yaml');
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 const app = express();
 app.use(cors());
 
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 app.use(bodyParser.json());
 app.use(jsend.middleware);
-
-// routes(app);
 
 app.use('/phone-number-generator/api', routes)
 
@@ -35,6 +33,4 @@ const server = app.listen(port, function() {
   console.log('app running on', server.address().port);
 });
 
-export default {
-  server
-}
+module.exports = server

@@ -1,0 +1,114 @@
+swagger: "2.0"
+info:
+    title: Phone Number Generator
+    description: An awesome app node application for generating unique numbers
+    version: 1.0.0
+
+servers:
+  - url: {protocol}://127.0.0.1:{port}
+    description: Development server (uses test data)
+    variables:
+      port:
+        enum:
+          - '3002'
+          - '3003'
+        default: '3003'
+      protocol:
+        enum:
+          - 'http'
+          - 'https'
+        default: 'http'
+
+basePath: /phone-number-generator/api
+schemes: 
+    - http
+    - https
+
+consumes:
+    - application/json
+
+paths:
+  /phonenumbers/:
+    post:
+      summary: Generate a new set of numbers by specifying the amount of numbers to generate
+      description: For any generation to take place, numbers need to be unique and must not exceed 10,000 at any given time
+      tags:
+        - Phone Numbers
+      parameters:
+        - in: body
+          name: NumberToGenerate
+          description: Integers of the number of  phone numbers to be generated,
+          required: true
+          schema:
+            $ref: '#/components/schemas/NumberGenration'
+      responses:
+        201:
+          description: Successfully generated new numbers
+        500:
+          $ref: '#/components/errors/internalServerError'
+        
+
+  /phonenumbers:
+    get:
+      summary: get all phone numbers that have been generated  by the user
+      description: Phone numbers are generated uniquely every time and the previous numbers are stored in the system
+      tags:
+        - Phone Numbers
+      responses:
+        200:
+          description: Successfully retrived all generated phone numbers 
+        500:
+          $ref: '#/components/errors/internalServerError'
+
+  
+
+  /phonenumbers/ascending:
+    get:
+      summary: get the generated numbers in ascending order
+      description: Will return the generated numbers in order of the lowest to the highest
+      tags:
+        - Phone Numbers
+      responses:
+        200:
+          description: Successfully sorted numbers in ascending order
+        500:
+          $ref: '#/components/errors/internalServerError'
+  
+  /phonenumbers/descending:
+    get:
+      summary: get the generated numbers in descending order
+      description: Will return the generated numbers in order of the highest to the lowest
+      tags:
+        - Phone Numbers
+      responses:
+        200:
+          description: Successfully sorted numbers in descending order
+        500:
+          $ref: '#/components/errors/internalServerError'
+  
+          
+
+  /phonenumbers/delete:
+    delete:
+      summary: Delete the generated phone numbers
+      description: deleting the phone numbers will clear the storage and prompt another number generation process
+      tags:
+         - Phone Numbers
+      responses:
+        200:
+          description: Phone numbers have been  successfully deleted
+        500:
+          $ref: '#/components/errors/internalServerError'
+
+       
+components:
+  schemas:
+    NumberGenration:
+      type: object
+      properties: 
+        NumberToGenerate:
+          type: number
+    
+  errors:
+    internalServerError:
+      description: Something went wrong on the server

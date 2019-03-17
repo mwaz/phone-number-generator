@@ -36,7 +36,7 @@ Technologies used in the application are Express and Node.
 ## Documentation 
 The app is currently documented using swagger 2.0 and the Open API Specification as shown below . 
 
-![Screen Shot 2019-03-17 at 11 32 19](https://user-images.githubusercontent.com/10160787/54487550-5e946580-48a8-11e9-977b-94e09c8ea024.png)
+![Screen Shot 2019-03-17 at 21 12 53](https://user-images.githubusercontent.com/10160787/54495888-81029f00-48f9-11e9-9625-64c3b1d9b58f.png)
 
 ## contributors
 [@mwaz](https://github.com/mwaz)

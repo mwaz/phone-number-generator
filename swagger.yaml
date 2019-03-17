@@ -88,7 +88,7 @@ paths:
   
           
 
-  /phonenumbers/delete:
+  /phonenumbers//:
     delete:
       summary: Delete the generated phone numbers
       description: deleting the phone numbers will clear the storage and prompt another number generation process

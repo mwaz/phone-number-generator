@@ -18,8 +18,12 @@ export default class PhoneController extends Controller {
             store.set('phonenumbers', JSON.stringify(data))
             const parsedList = JSON.parse(existingNumbers)
             const newList = [...parsedList, ...data ]
-            const storedData = store.set('phonenumbers', JSON.stringify(newList))
-            return storedData
+            if((parsedList.length + data.length) > 10000){
+                res.status(400).jsend.fail({ message: 'Oops You cannot add more, you have exceeded limit'})
+                return parsedList
+            }
+                const storedData = store.set('phonenumbers', JSON.stringify(newList))
+                return storedData
         }
         
         const generateNumbers = async(NumberToGenerate) => {

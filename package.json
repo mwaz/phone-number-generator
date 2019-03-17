@@ -4,9 +4,10 @@
   "description": "A random phone number generator",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=testing ./node_modules/.bin/_mocha --exit --reporter spec",
+    "test": " NODE_ENV=testing  nyc ./node_modules/.bin/mocha --require @babel/register",
     "lint": "eslint app/",
-    "start": "nodemon --exec babel-node ./index.js localhost 3000"
+    "start": "nodemon --exec babel-node ./index.js ",
+    "coveralls": "nyc --require @babel/register report ./node_modules/.bin/mocha  --reporter=text-lcov | coveralls "
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,7 @@
 import Controller from './index';
 import store from 'store-js';
-
+import fs from 'fs';
+const __dirname = `${process.env.DEV_PATH}app/documents`;
 
 
 export default class PhoneController extends Controller {
@@ -61,7 +62,6 @@ export default class PhoneController extends Controller {
         const existingNumbers = store.get('phonenumbers')
         const numberResponse = JSON.parse(existingNumbers);
         const sorted = numberResponse.sort(function(a, b){return a-b});
-        console.log(existingNumbers, 'nmbrs [][][][][[]][][][][][][][][][][][][][][][][][][] your output');
         res.status(200).jsend.success({ PhoneNumbers:
             {
                 numbersGenerated: numberResponse.length,
@@ -91,4 +91,15 @@ export default class PhoneController extends Controller {
         res.status(200).jsend.success({ message: 'Successfully cleared the phone number storage'
         })
     }
+
+    async saveDataToFile (req, res){
+        const existingNumbers = store.get('phonenumbers')
+        const numberResponse = JSON.parse(existingNumbers);
+
+        fs.writeFile(`${__dirname}/phonenumbers.txt`, numberResponse , (err) => {
+            res.status(201).jsend.success({ message: 'successfully saved phone numbers to file storage'
+        });
+
+    })
+}
 }

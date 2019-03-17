@@ -4,11 +4,11 @@ import PhoneController from '../controllers/phoneController';
 
 const phoneController = new PhoneController();
 const router = new Router();
-import store from 'store-js';
 
 router.post('/', catchErrors(phoneController.generateNumbers));
 router.get('/', catchErrors(phoneController.getNumbers));
 router.delete('/', catchErrors(phoneController.deleteNumbers));
+router.post('/save', catchErrors(phoneController.saveDataToFile));
 router.get('/ascending', catchErrors(phoneController.sortNumbersMax));
 router.get('/descending', catchErrors(phoneController.sortNumbersMin));
 

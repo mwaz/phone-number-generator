@@ -45,6 +45,21 @@ describe('Phone Numbers : /phonenumbers', () => {
              expect(res.body.data.message).to.be.eql(`Oops You have exceeded the 10,000  number generation limit`);
          })
 
+         it('POST: Cannot save files to an external storage', async () => {
+         await api
+          .post(`${baseUrl}/phonenumbers/`)
+          .send(
+            data.phoneNumberGenerator
+          )
+          const res = await api
+          .post(`${baseUrl}/phonenumbers/save`)
+          .set('Accept', 'application/json')
+          expect(res).to.have.status(201)
+          expect(res.body).should.be.a('Object')
+          expect(res.body.status).to.be.eql('success');
+          expect(res.body.data.message).to.be.eql(`successfully saved phone numbers to file storage`);
+      })
+
         it('GET: Can get generated phone numbers', async () => {
              await api
              .post(`${baseUrl}/phonenumbers/`)

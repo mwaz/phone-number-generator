@@ -28,7 +28,6 @@ export default class PhoneController extends Controller {
                 const number = numberGenerator();
                 numberArray.push(number)
               }
-           
               return persistData(numberArray);
         }
         

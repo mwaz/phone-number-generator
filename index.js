@@ -7,6 +7,7 @@ import express from 'express';
 import jsend from 'jsend';
 import swaggerUi  from 'swagger-ui-express';
 import YAML from 'yamljs';
+import store from 'store-js'
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 const app = express();
@@ -31,6 +32,7 @@ const port = process.env.PORT || dBConfig.port || 3005;
 
 const server = app.listen(port, function() {
   console.log('app running on', server.address().port);
+  store.set('phonenumbers', JSON.stringify([]))
 });
 
 module.exports = server

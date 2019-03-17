@@ -14,11 +14,6 @@ const baseUrl = '/phone-number-generator/api'
 describe('Phone Numbers : /phonenumbers', () => {
       describe('create phone numbers', () => {
         it('POST: Can generate phone numbers', async () => {
-         await api
-            .post(`${baseUrl}/phonenumbers/`)
-            .send(
-              data.phoneNumberGenerator
-            )
             const res = await api
             .post(`${baseUrl}/phonenumbers/`)
             .send(
